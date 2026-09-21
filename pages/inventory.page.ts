@@ -1,4 +1,4 @@
-import  { Page,Locator } from '@playwright/test';
+import { Page, Locator } from '@playwright/test';
 import { BasePage } from './base.page'; 
 import { HeaderComponent } from './components/header.component';
 
@@ -6,15 +6,21 @@ export class InventoryPage extends BasePage {
     public readonly header: HeaderComponent;   
     private readonly titleSpan: Locator;
     private readonly inventoryItems: Locator;
+    private readonly addToCartBackpackButton: Locator;
 
     constructor(page: Page) {
         super(page);
         this.header = new HeaderComponent(page);
         this.titleSpan = page.locator('.title');
         this.inventoryItems = page.locator('.inventory_item');
+        this.addToCartBackpackButton = page.locator('#add-to-cart-sauce-labs-backpack');
     }
 
     async getTitle(): Promise<string> {
         return await this.safeGetText(this.titleSpan);
+    }
+
+    async addBackpackToCart(): Promise<void> {
+        await this.safeClick(this.addToCartBackpackButton);
     }
 }
