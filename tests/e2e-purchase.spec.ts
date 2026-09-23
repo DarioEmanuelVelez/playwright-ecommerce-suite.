@@ -1,13 +1,9 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/login.page';
-import { InventoryPage } from '../pages/inventory.page';
+import { test, expect } from '../fixtures/page.fixtures';
 
 test.describe('Flujo E2E: Inicio de sesión y agregado de productos', () => {
 
-  test('Debería iniciar sesión y agregar la mochila al carrito exitosamente', async ({ page }) => {
-    // 1. Instanciamos las páginas pasándoles la 'page' de Playwright
-    const loginPage = new LoginPage(page);
-    const inventoryPage = new InventoryPage(page);
+  test('Debería iniciar sesión y agregar la mochila al carrito exitosamente', async ({ loginPage, inventoryPage }) => {
+
 
     // 2. Navegamos e iniciamos sesión
     await loginPage.navigateTo();
