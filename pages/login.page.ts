@@ -14,7 +14,7 @@ export class LoginPage extends BasePage {
     this.loginButton = page.getByRole('button', { name: 'Login' });
   }
 
-  async goto():Promise<void> {
+  async navigateTo():Promise<void> {
     await this.page.goto('https://www.saucedemo.com/');
   } 
 
